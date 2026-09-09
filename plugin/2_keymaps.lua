@@ -11,7 +11,7 @@ Config.leader_group_clues = {
   { mode = 'n', keys = '<Leader>s', desc = '+Session' },
   { mode = 'n', keys = '<Leader>t', desc = '+Terminal' },
   { mode = 'n', keys = '<Leader>v', desc = '+Visits' },
-  { mode = 'n', keys = '\\', desc = '+Visits' },
+  { mode = 'n', keys = '\\', desc = '+Toggles' },
 
   { mode = 'x', keys = '<Leader>g', desc = '+Git' },
   { mode = 'x', keys = '<Leader>l', desc = '+Language' },
@@ -68,3 +68,47 @@ nmap_leader('bd', '<Cmd>lua MiniBufremove.delete()<CR>',         'Delete')
 nmap_leader('bD', '<Cmd>lua MiniBufremove.delete(0, true)<CR>',  'Delete!')
 nmap_leader('bw', '<Cmd>lua MiniBufremove.wipeout()<CR>',        'Wipeout')
 nmap_leader('bW', '<Cmd>lua MiniBufremove.wipeout(0, true)<CR>', 'Wipeout!')
+
+-- Explore
+local explore_at_file = '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>'
+local explore_quickfix = function()
+  vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
+end
+
+nmap_leader('ed', '<Cmd>lua MiniFiles.open()<CR>',          'Directory')
+nmap_leader('ef', explore_at_file,                          'File directory')
+nmap_leader('ei', '<Cmd>edit $MYVIMRC<CR>',                 'init.lua')
+nmap_leader('en', '<Cmd>lua MiniNotify.show_history()<CR>', 'Notifications')
+nmap_leader('eq', explore_quickfix,                         'Quickfix list')
+
+-- Find
+nmap_leader('fb', '<Cmd>Pick buffers<CR>',                      'Buffers')
+nmap_leader('ff', '<Cmd>Pick files<CR>',                        'Files')
+nmap_leader('fg', '<Cmd>Pick grep_live<CR>',                    'Grep live')
+nmap_leader('fG', '<Cmd>Pick grep pattern="<cword>"<CR>',       'Grep current word')
+nmap_leader('fh', '<Cmd>Pick help<CR>',                         'Help tags')
+
+-- Git
+local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
+local git_log_buf_cmd = git_log_cmd .. ' --follow -- %'
+
+nmap_leader('ga', '<Cmd>Git diff --cached<CR>',             'Added diff')
+nmap_leader('gA', '<Cmd>Git diff --cached -- %<CR>',        'Added diff buffer')
+nmap_leader('gc', '<Cmd>Git commit<CR>',                    'Commit')
+nmap_leader('gC', '<Cmd>Git commit --amend<CR>',            'Commit amend')
+nmap_leader('gd', '<Cmd>Git diff<CR>',                      'Diff')
+nmap_leader('gD', '<Cmd>Git diff -- %<CR>',                 'Diff buffer')
+nmap_leader('gl', '<Cmd>' .. git_log_cmd .. '<CR>',         'Log')
+nmap_leader('gL', '<Cmd>' .. git_log_buf_cmd .. '<CR>',     'Log buffer')
+nmap_leader('go', '<Cmd>lua MiniDiff.toggle_overlay()<CR>', 'Toggle overlay')
+nmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>',  'Show at cursor')
+
+xmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at selection')
+--Find git
+local pick_added_hunks_buf = '<Cmd>Pick git_hunks path="%" scope="staged"<CR>'
+nmap_leader('gfc', '<Cmd>Pick git_commits<CR>',                  'Commits (all)')
+nmap_leader('gfC', '<Cmd>Pick git_commits path="%"<CR>',         'Commits (buf)')
+nmap_leader('fa', '<Cmd>Pick git_hunks scope="staged"<CR>',     'Added hunks (all)')
+nmap_leader('fA', pick_added_hunks_buf,                         'Added hunks (buf)')
+nmap_leader('fm', '<Cmd>Pick git_hunks<CR>',                    'Modified hunks (all)')
+nmap_leader('fM', '<Cmd>Pick git_hunks path="%"<CR>',           'Modified hunks (buf)')
