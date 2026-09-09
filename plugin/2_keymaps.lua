@@ -57,7 +57,6 @@ toggle('w', 'wrap',           'Toggle wrap')
 toggle('s', 'spell',          'Toggle spell')
 toggle('c', 'cursorline',     'Toggle cursorline')
 toggle('h', 'hlsearch',       'Toggle search highlight')
-toggle('l', 'list',           'Toggle listchars')
 
 -- Buffer control
 nmap_leader('ba', '<Cmd>b#<CR>',                                 'Alternate')
