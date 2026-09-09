@@ -122,6 +122,8 @@ nmap_leader('lR', '<Cmd>lua vim.lsp.buf.references()<CR>',      'References')
 nmap_leader('ls', '<Cmd>lua vim.lsp.buf.definition()<CR>',      'Source definition')
 nmap_leader('lt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition')
 
+xmap_leader('lf', '<Cmd>lua require("conform").format()<CR>', 'Format selection')
+
 -- Session
 local session_new = 'vim.ui.input({ prompt = "Session name: " }, MiniSessions.write)'
 
