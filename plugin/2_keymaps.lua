@@ -124,3 +124,12 @@ nmap_leader('lr', '<Cmd>lua vim.lsp.buf.rename()<CR>',          'Rename')
 nmap_leader('lR', '<Cmd>lua vim.lsp.buf.references()<CR>',      'References')
 nmap_leader('ls', '<Cmd>lua vim.lsp.buf.definition()<CR>',      'Source definition')
 nmap_leader('lt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition')
+
+-- Session
+local session_new = 'vim.ui.input({ prompt = "Session name: " }, MiniSessions.write)'
+
+nmap_leader('sd', '<Cmd>lua MiniSessions.select("delete")<CR>', 'Delete')
+nmap_leader('sn', '<Cmd>lua ' .. session_new .. '<CR>',         'New')
+nmap_leader('sr', '<Cmd>lua MiniSessions.select("read")<CR>',   'Read')
+nmap_leader('sR', '<Cmd>lua MiniSessions.restart()<CR>',        'Restart')
+nmap_leader('sw', '<Cmd>lua MiniSessions.write()<CR>',          'Write current')
