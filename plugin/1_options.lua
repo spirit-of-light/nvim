@@ -1,7 +1,8 @@
 --== General ==--
 vim.g.mapleader = " "
-vim.o.undofile = true
 vim.o.swapfile = false
+vim.o.switchbuf = 'usetab' -- Use already opened buffers when switching
+vim.o.undofile = true
 
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 
