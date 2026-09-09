@@ -133,3 +133,7 @@ nmap_leader('sn', '<Cmd>lua ' .. session_new .. '<CR>',         'New')
 nmap_leader('sr', '<Cmd>lua MiniSessions.select("read")<CR>',   'Read')
 nmap_leader('sR', '<Cmd>lua MiniSessions.restart()<CR>',        'Restart')
 nmap_leader('sw', '<Cmd>lua MiniSessions.write()<CR>',          'Write current')
+
+-- Terminal
+nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
+nmap_leader('tt', '<Cmd>vertical term<CR>',   'Terminal (vertical)')
