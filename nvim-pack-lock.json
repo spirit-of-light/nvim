@@ -1,0 +1,24 @@
+{
+  "plugins": {
+    "mini.nvim": {
+      "rev": "ee23d71c02440668cbca5b0cd8640d79d5bc250b",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nvim-colorizer.lua": {
+      "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
+      "src": "https://github.com/norcalli/nvim-colorizer.lua"
+    },
+    "nvim-lspconfig": {
+      "rev": "da1aff0332774a0f60d52bf972e815dfc226f276",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "render-markdown.nvim": {
+      "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "vimtex": {
+      "rev": "e355987594cbf16283bee7b37e3aa3a65d5e1c5c",
+      "src": "https://github.com/lervag/vimtex"
+    }
+  }
+}
