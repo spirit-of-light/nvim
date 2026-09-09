@@ -21,3 +21,22 @@ end
 
 -- Highlight yanked text
 Config.new_autocmd('TextYankPost', nil, function() vim.hl.on_yank() end, 'Highlight on yank')
+
+--== Helpers ==--
+-- Normal mode
+local nmap = function(keys, execution, desc)
+  vim.keymap.set('n', keys, execution, { desc = desc })
+end
+-- Visual mode
+local xmap = function(keys, execution, desc)
+  vim.keymap.set('x', keys, execution, { desc = desc })
+end
+
+-- Normal mode leader
+local nmap_leader = function(keys, execution, desc)
+  vim.keymap.set('n', '<Leader>' .. keys, execution, { desc = desc })
+end
+-- Visual mode leader
+local xmap_leader = function(keys, execution, desc)
+  vim.keymap.set('x', '<Leader>' .. keys, execution, { desc = desc })
+end
