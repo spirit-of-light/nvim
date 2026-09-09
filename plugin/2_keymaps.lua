@@ -5,6 +5,7 @@ Config.leader_group_clues = {
   { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
   { mode = 'n', keys = '<Leader>f', desc = '+Find' },
   { mode = 'n', keys = '<Leader>g', desc = '+Git' },
+  { mode = 'n', keys = '<Leader>gf', desc = '+Find' },
   { mode = 'n', keys = '<Leader>l', desc = '+Language' },
   { mode = 'n', keys = '<Leader>s', desc = '+Session' },
   { mode = 'n', keys = '<Leader>t', desc = '+Terminal' },
@@ -43,7 +44,7 @@ end
 
 -- Window navigation with <C-[key]>
 for _, k in ipairs({ 'h', 'j', 'k', 'l' }) do
-  vim.keymap.set('n', '<C-' .. k .. '>', '<C-w>' .. k, { desc = 'Focus window ' .. k })
+   nmap('<C-' .. k .. '>', '<C-w>' .. k, 'Focus window ' .. k)
 end
 
 -- Highlight yanked text
@@ -73,13 +74,16 @@ end
 
 nmap_leader('ed', '<Cmd>lua MiniFiles.open()<CR>',          'Directory')
 nmap_leader('ef', explore_at_file,                          'File directory')
-nmap_leader('ei', '<Cmd>edit $MYVIMRC<CR>',                 'init.lua')
 nmap_leader('en', '<Cmd>lua MiniNotify.show_history()<CR>', 'Notifications')
 nmap_leader('eq', explore_quickfix,                         'Quickfix list')
 
 -- Find
+MiniPick.registry.files_hidden = function(local_opts)
+  local items = vim.fn.systemlist({ 'rg', '--files', '--hidden', '--glob', '!.git/', '--color=never' })
+  return MiniPick.start({ source = { items = items, name = 'Files (hidden)' } })
+end
 nmap_leader('fb', '<Cmd>Pick buffers<CR>',                      'Buffers')
-nmap_leader('ff', '<Cmd>Pick files<CR>',                        'Files')
+nmap_leader('ff', '<Cmd>Pick files_hidden<CR>',                        'Files')
 nmap_leader('fg', '<Cmd>Pick grep_live<CR>',                    'Grep live')
 nmap_leader('fG', '<Cmd>Pick grep pattern="<cword>"<CR>',       'Grep current word')
 nmap_leader('fh', '<Cmd>Pick help<CR>',                         'Help tags')
@@ -104,10 +108,10 @@ xmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at selection')
 local pick_added_hunks_buf = '<Cmd>Pick git_hunks path="%" scope="staged"<CR>'
 nmap_leader('gfc', '<Cmd>Pick git_commits<CR>',                  'Commits (all)')
 nmap_leader('gfC', '<Cmd>Pick git_commits path="%"<CR>',         'Commits (buf)')
-nmap_leader('fa', '<Cmd>Pick git_hunks scope="staged"<CR>',     'Added hunks (all)')
-nmap_leader('fA', pick_added_hunks_buf,                         'Added hunks (buf)')
-nmap_leader('fm', '<Cmd>Pick git_hunks<CR>',                    'Modified hunks (all)')
-nmap_leader('fM', '<Cmd>Pick git_hunks path="%"<CR>',           'Modified hunks (buf)')
+nmap_leader('gfa', '<Cmd>Pick git_hunks scope="staged"<CR>',     'Added hunks (all)')
+nmap_leader('gfA', pick_added_hunks_buf,                         'Added hunks (buf)')
+nmap_leader('gfm', '<Cmd>Pick git_hunks<CR>',                    'Modified hunks (all)')
+nmap_leader('gfM', '<Cmd>Pick git_hunks path="%"<CR>',           'Modified hunks (buf)')
 
 -- LSP
 nmap_leader('la', '<Cmd>lua vim.lsp.buf.code_action()<CR>',     'Actions')
