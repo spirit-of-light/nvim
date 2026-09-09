@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 vim.o.undofile = true
 vim.o.swapfile = false
 
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
+
 --== UI ==--
 vim.o.breakindent = true
 vim.o.breakindentopt = 'list:-1'
