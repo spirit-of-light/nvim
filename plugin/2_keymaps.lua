@@ -35,10 +35,10 @@ end
 
 -- Option toggles under `\`
 local toggle = function(key, opt, desc)
-  vim.keymap.set('n', '\\' .. key, function()
-    vim.o[opt] = not vim.o[opt]
-    vim.notify(opt .. ' = ' .. tostring(vim.o[opt]))
-  end, { desc = desc })
+   vim.keymap.set('n', '\\' .. key, function()
+      vim.cmd('setlocal ' .. opt .. '!')
+      vim.notify(opt .. ' = ' .. tostring(vim.o[opt]))
+   end, { desc = desc })
 end
 
 -- Window navigation with <C-[key]>
