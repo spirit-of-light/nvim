@@ -87,6 +87,7 @@ nmap_leader('ff', '<Cmd>Pick files_hidden<CR>',                        'Files')
 nmap_leader('fg', '<Cmd>Pick grep_live<CR>',                    'Grep live')
 nmap_leader('fG', '<Cmd>Pick grep pattern="<cword>"<CR>',       'Grep current word')
 nmap_leader('fh', '<Cmd>Pick help<CR>',                         'Help tags')
+nmap_leader('fr', '<Cmd>Pick resume<CR>',                       'Resume')
 
 -- Git
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
