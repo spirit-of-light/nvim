@@ -68,6 +68,9 @@ vim.o.completetimeout = 100
 local fix_formatoptions = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
 Config.new_autocmd('FileType', nil, fix_formatoptions, "Proper 'formatoptions'")
 
+-- Highlight yanked text
+Config.new_autocmd('TextYankPost', nil, function() vim.hl.on_yank() end, 'Highlight on yank')
+
 --== Diagnostics ==--
 -- Neovim has built-in support for showing diagnostic messages. This configures
 -- a more conservative display while still being useful.

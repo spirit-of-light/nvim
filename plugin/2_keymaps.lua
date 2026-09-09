@@ -15,7 +15,7 @@ Config.leader_group_clues = {
   { mode = 'x', keys = '<Leader>l', desc = '+Language' },
 }
 
---== Helpers ==--
+--== Helpers ================================================================================
 -- Normal mode
 local nmap = function(keys, execution, desc)
   vim.keymap.set('n', keys, execution, { desc = desc })
@@ -42,15 +42,13 @@ local toggle = function(key, opt, desc)
    end, { desc = desc })
 end
 
+--== Keybinds ================================================================================
+
 -- Window navigation with <C-[key]>
 for _, k in ipairs({ 'h', 'j', 'k', 'l' }) do
    nmap('<C-' .. k .. '>', '<C-w>' .. k, 'Focus window ' .. k)
 end
 
--- Highlight yanked text
-Config.new_autocmd('TextYankPost', nil, function() vim.hl.on_yank() end, 'Highlight on yank')
-
---== Keybinds ==--
 -- Toggles for various common options
 toggle('n', 'number',         'Toggle line numbers')
 toggle('r', 'relativenumber', 'Toggle relative numbers')
