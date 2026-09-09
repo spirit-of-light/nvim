@@ -13,7 +13,6 @@ vim.o.cursorline = true
 vim.o.cursorlineopt = 'screenline,number'
 vim.o.fillchars = 'eob: ,fold:╌'
 vim.o.linebreak = true
-vim.o.pumblend = 0
 vim.o.pumborder = 'single' -- popup menu border
 vim.o.pumheight = 10 -- popup menu height
 vim.o.pummaxwidth = 100 -- popup menu width
@@ -26,7 +25,6 @@ vim.o.splitbelow = true
 vim.o.splitkeep = 'screen'
 vim.o.splitright = true
 vim.o.termguicolors = true
-vim.o.winblend = 0
 vim.o.winborder = 'single'
 vim.o.wrap = false
 
