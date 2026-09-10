@@ -63,3 +63,9 @@ later(function()
     -- formatters_by_ft = { lua = { 'stylua' } },
   })
 end)
+
+-- Rendering Markdown
+later(function() 
+   add({'https://github.com/meanderingprogrammer/render-markdown.nvim'})
+   require('render-markdown').setup({})
+end)
