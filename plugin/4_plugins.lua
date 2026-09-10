@@ -43,3 +43,8 @@ now_if_args(function()
   local ts_start = function(ev) vim.treesitter.start(ev.buf) end
   Config.new_autocmd('FileType', filetypes, ts_start, 'Start tree-sitter')
 end)
+
+-- LSP
+now_if_args(function()
+   add({ 'https://github.com/neovim/nvim-lspconfig' })
+end)
