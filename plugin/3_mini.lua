@@ -32,7 +32,7 @@ now(function() require('mini.notify').setup() end)
 now(function() require('mini.sessions').setup() end)
 
 -- Start screen
-now(function() require('mini.starter').setup() end)
+now(function() require('mini.starter').setup({ header = '' }) end)
 
 -- Statusline
 now(function() require('mini.statusline').setup() end)
