@@ -136,3 +136,9 @@ nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
 nmap_leader('tt', '<Cmd>vertical term<CR>',   'Terminal (vertical)')
 
 nmap_leader('ot', '<Cmd>lua MiniTrailspace.trim()<CR>',    'Trim trailspace')
+
+-- Copy and pase to system clipboard
+nmap('gy', '"+y', 'Copy to system clipboard')
+nmap('gp', '"+p', 'Paste from system clipboard')
+xmap('gy', '"+y', 'Copy to system clipboard')
+xmap('gp', '"+p', 'Paste from system clipboard')
