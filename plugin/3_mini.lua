@@ -142,7 +142,10 @@ end)
 later(function() require('mini.align').setup() end)
 
 -- Keymap extras
--- later(function() require('mini.keymap').setup() end)
+later(function()
+  require('mini.keymap').setup()
+  MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
+end)
 
 -- Move selected text
 -- using alt + nav
