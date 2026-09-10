@@ -3,6 +3,9 @@ local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
 --== Step one ================================================================================
 
+-- Colorscheme
+now(function() vim.cmd('colorscheme miniautumn') end)
+
 -- Icon provider
 now(function()
   -- Set up to not prefer extension-based icon for some extensions
@@ -254,8 +257,8 @@ later(function() require('mini.jump').setup() end)
 later(function() require('mini.jump2d').setup() end)
 
 -- Picking
-later(function() 
-   require('mini.pick').setup() 
+later(function()
+   require('mini.pick').setup()
    MiniPick.registry.files_hidden = function(local_opts)
       local items = vim.fn.systemlist({ 'rg', '--files', '--hidden', '--glob', '!.git/', '--color=never' })
       return MiniPick.start({ source = { items = items, name = 'Files (hidden)' } })
