@@ -21,6 +21,7 @@ now_if_args(function()
     'lua',
     'vimdoc',
     'markdown',
+    'c',
     -- Add here more languages with which you want to use tree-sitter
     -- To see available languages:
     -- - Execute `:=require('nvim-treesitter').get_available()`
@@ -47,6 +48,7 @@ end)
 -- LSP
 now_if_args(function()
    add({ 'https://github.com/neovim/nvim-lspconfig' })
+   vim.lsp.enable({ 'lua_ls', 'clangd' })
 end)
 
 -- Formatting
@@ -60,7 +62,10 @@ later(function()
     },
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
-    -- formatters_by_ft = { lua = { 'stylua' } },
+    formatters_by_ft = {
+       lua = { 'stylua' },
+       c = { 'clang_format' }
+    },
   })
 end)
 
