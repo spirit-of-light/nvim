@@ -76,10 +76,6 @@ nmap_leader('en', '<Cmd>lua MiniNotify.show_history()<CR>', 'Notifications')
 nmap_leader('eq', explore_quickfix,                         'Quickfix list')
 
 -- Find
-MiniPick.registry.files_hidden = function(local_opts)
-  local items = vim.fn.systemlist({ 'rg', '--files', '--hidden', '--glob', '!.git/', '--color=never' })
-  return MiniPick.start({ source = { items = items, name = 'Files (hidden)' } })
-end
 nmap_leader('fb', '<Cmd>Pick buffers<CR>',                      'Buffers')
 nmap_leader('ff', '<Cmd>Pick files_hidden<CR>',                        'Files')
 nmap_leader('fg', '<Cmd>Pick grep_live<CR>',                    'Grep live')
